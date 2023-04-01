@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     marginTop: vs(15),
-    paddingBottom: ms(50),
+    paddingBottom: vs(100),
   },
   container: {
     backgroundColor: colors.white,

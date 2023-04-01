@@ -22,6 +22,7 @@ const AddNotes = props => {
   const [modalVisible, setModalVisible] = useState(false);
   const [inputModal, setInputModal] = useState(false);
   const [notesArr, setNotesArr] = useState([]);
+  const [noteId, setNoteId] = useState();
   const [note, setNote] = useState({
     id: '',
     title: new Date().toDateString(),
@@ -29,7 +30,8 @@ const AddNotes = props => {
     imageUrl: '',
   });
 
-  const handleIcon = () => {
+  const handleIcon = id => {
+    setNoteId(id);
     setModalVisible(true);
   };
 
@@ -43,18 +45,18 @@ const AddNotes = props => {
   };
 
   const handleDelete = () => {
-    const filteredArr = notesArr.filter(val => val.title !== note.title);
+    const filteredArr = notesArr.filter(val => val.id !== noteId);
+
     setNotesArr(filteredArr);
     setModalVisible(false);
   };
 
-  // console.log(note, 'This is the id');
   const handleAddTask = () => {
     let newNote = {
       ...note,
       id: uuidv4(),
     };
-    console.log(newNote, 'This isthe note sending to array');
+
     setNotesArr([...notesArr, newNote]);
     setNote({
       title: new Date().toDateString(),
@@ -108,7 +110,7 @@ const AddNotes = props => {
             name="dots-vertical"
             size={23}
             color="black"
-            onPress={handleIcon}
+            onPress={() => handleIcon(item.id)}
           />
         </View>
       </View>
@@ -134,8 +136,7 @@ const AddNotes = props => {
           setModal={val => setInputModal(val)}
           outerView={styles.outerView}
           innerView={styles.innerView}>
-          <KeyboardAwareScrollView
-            contentContainerStyle={styles.inputContainer}>
+          <KeyboardAwareScrollView keyboardShouldPersistTaps="always">
             <Text style={styles.heading}>ADD NOTE</Text>
             <FieldName title="Title:" />
             <AppTextInput

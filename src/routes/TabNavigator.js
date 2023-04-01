@@ -11,21 +11,15 @@ import {vs} from 'react-native-size-matters';
 
 import NotesStack from './NotesStack';
 
-//icon names: home, note-text-outline, trending-up,account-supervisor
-
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
   const handleLeftImg = () => {
-    console.log('====================================');
     console.log('Left Image pressed');
-    console.log('====================================');
   };
 
   const handleRightIcon = () => {
-    console.log('====================================');
     console.log('Right icon pressed');
-    console.log('====================================');
   };
 
   const TabIcons = ({name, color}) => (
