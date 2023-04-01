@@ -6,13 +6,13 @@ import colors from '../../constants/customThemeColors';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
-    borderBottomWidth: 1,
+    borderWidth: 1,
     borderColor: colors.black,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     alignSelf: 'center',
-    borderBottomColor: '#06A15D',
+    marginBottom: vs(10),
   },
   leftContainer: {
     flexDirection: 'row',

@@ -3,18 +3,16 @@ import {Modal, TouchableWithoutFeedback, View} from 'react-native';
 
 import styles from './style';
 
-const AppModal = ({modal, setModal, children}) => {
+const AppModal = ({modal, setModal, innerView, outerView, children}) => {
   return (
     <Modal
       visible={modal}
       animationType="fade"
       transparent
       onRequestClose={() => setModal(!modal)}>
-      <TouchableWithoutFeedback onPress={() => setModal(false)}>
-        <View style={styles.outerModalView}>
-          <View style={styles.innerModalView}>{children}</View>
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={[styles.outerModalView, outerView]}>
+        <View style={[styles.innerModalView, innerView]}>{children}</View>
+      </View>
     </Modal>
   );
 };
